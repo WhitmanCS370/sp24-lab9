@@ -53,6 +53,8 @@ Run the corresponding test module to verify that your refactorings didn't break 
 
 After doing this exercise, briefly explain what you changed.
 
+We didn't add an explaining variable, but we renamed the variables that were there to be more self-explanatory (like changing 'method' to 'methodname' since it's not actually a method).
+
 ### Exercise 3: Understanding code
 
 Answer the following questions:
@@ -63,8 +65,12 @@ Answer the following questions:
 
     (Hint: Look at the implementation of `LoadObjects.load`.) 
 
+    -Fields only splits on one colon, which would be the first one. LoadObjects can't handle aliasing, it would be an unknown object type because the key 'alias' doesn't have an associated method.
+
 2.  Why doesn’t `LoadAlias.load` calculate object IDs? 
     Why does it use the IDs saved in the archive instead?
+
+    -LoadAlias.load has fields that split on 2 colons, cutting the input into key, ident, and value. The load function checks to see if they key is "alias", checks to see if we've already seen it, then loads the value from it. Since it's loading, we just need to know what's saved, we only need to check if the alias already exists. If there isn't anything saved with that ID, then we can't load anything.
 
 ### Exercise 4: Strings
 
