@@ -1,53 +1,50 @@
 from io import StringIO
 from textwrap import dedent
 
-from builtin import load, save
-
-
 from io import StringIO
 from objects import SaveObjects, LoadObjects
 
 def test_save_bool():
     output = StringIO()
     saver = SaveObjects(output)
-    saver.save_bool(True)
+    saver.save(True)
     assert output.getvalue() == "bool:True\n"
 
 def test_save_float():
     output = StringIO()
     saver = SaveObjects(output)
-    saver.save_float(1.23)
+    saver.save(1.23)
     assert output.getvalue() == "float:1.23\n"
 
 def test_save_int():
     output = StringIO()
     saver = SaveObjects(output)
-    saver.save_int(-456)
+    saver.save(-456)
     assert output.getvalue() == "int:-456\n"
 
 def test_save_str():
     output = StringIO()
     saver = SaveObjects(output)
-    saver.save_str("abc")
+    saver.save("abc")
     #print("test_save_Str", output.getvalue())
     assert output.getvalue() == "str:1\nabc\n"
 
 def test_save_list():
     output = StringIO()
     saver = SaveObjects(output)
-    saver.save_list([1, 2, 3])
+    saver.save([1, 2, 3])
     assert output.getvalue() == "list:3\nint:1\nint:2\nint:3\n"
 
 def test_save_set():
     output = StringIO()
     saver = SaveObjects(output)
-    saver.save_set({1, 2, 3})
+    saver.save({1, 2, 3})
     assert output.getvalue() == "set:3\nint:1\nint:2\nint:3\n"
 
 def test_save_dict():
     output = StringIO()
     saver = SaveObjects(output)
-    saver.save_dict({"key1": "value1", "key2": "value2"})
+    saver.save({"key1": "value1", "key2": "value2"})
     assert output.getvalue() == "dict:2\nstr:1\nkey1\nstr:1\nvalue1\nstr:1\nkey2\nstr:1\nvalue2\n"
 
 def test_load_bool():
