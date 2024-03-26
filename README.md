@@ -11,8 +11,8 @@ Enter your names here
 
 ## Team Roles for Part 1
 Who will start out as
-* DRIVER: Driver's name
-* NAVIGATOR: Navigator's name
+* DRIVER: Oliver Baltzer
+* NAVIGATOR: Marlyn 
 
 You will switch halfway through this activity.
 
@@ -21,7 +21,13 @@ You will switch halfway through this activity.
 Write your answers to the questions below.
 
 * What were the main ideas from SDX chapter 16?
+storing object data so that object can be reconstructed after being destroyed and the data can persist after the object is destroyed.
+
+There were two different corner cases which the chapter considered, aliasing and circularity.
+
 * What questions did you have about the material in the chapters? What did you find confusing?
+
+I found aliasing a little confusing.
 
 ### Exercise 0: Running the tests
 
@@ -61,8 +67,12 @@ Answer the following questions:
 
     (Hint: Look at the implementation of `LoadObjects.load`.) 
 
+    We think that since an aliase is just a reference back to the orignial data, you dont need to include the length of the list in the alias because it is included in the original piece of data.
+
 2.  Why doesn’t `LoadAlias.load` calculate object IDs? 
     Why does it use the IDs saved in the archive instead?
+
+    because the original object is already seen and added to the seen list, where the id can simply be used to look up the original object. 
 
 ### Exercise 4: Strings
 
