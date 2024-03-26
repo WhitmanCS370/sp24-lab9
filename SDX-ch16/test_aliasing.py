@@ -2,21 +2,27 @@ from io import StringIO
 
 from aliasing import SaveAlias, LoadAlias
 
+
 # [roundtrip]
 def roundtrip(fixture):
     writer = StringIO()
     SaveAlias(writer).save(fixture)
     reader = StringIO(writer.getvalue())
     return LoadAlias(reader).load()
+
+
 # [/roundtrip]
+
 
 def test_no_aliasing():
     fixture = [True, 1, "word"]
     assert roundtrip(fixture) == fixture
 
+
 def test_duplicated_string():
     fixture = ["word", "word"]
     assert roundtrip(fixture) == fixture
+
 
 def test_aliased_list():
     fixture = ["word"]
@@ -28,12 +34,14 @@ def test_aliased_list():
     assert len(result[1]) == 2
     assert result[1][0] == "word"
 
+
 ### Test runner
 import time
 
+
 def run_tests():
     results = {"pass": 0, "fail": 0, "error": 0}
-    for (name, test) in globals().items():
+    for name, test in globals().items():
         if not name.startswith("test_"):
             continue
         try:
@@ -47,5 +55,6 @@ def run_tests():
     print(f"fail {results['fail']}")
     print(f"error {results['error']}")
 
-if __name__ == '__main__':
+
+if __name__ == "__main__":
     run_tests()

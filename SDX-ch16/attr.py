@@ -5,6 +5,7 @@ class Example:
     def get_size(self):
         return len(self.label)
 
+
 ex = Example("thing")
 print("ex has missing", hasattr(ex, "missing"))
 print("ex has label", hasattr(ex, "label"), "with value", getattr(ex, "label"))

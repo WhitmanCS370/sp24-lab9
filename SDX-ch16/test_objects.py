@@ -1,18 +1,19 @@
 from io import StringIO
 from textwrap import dedent
-
-from builtin import load, save
-
+from objects import SaveObjects, LoadObjects
+import time
 
 def test_save_bool_single():
     output = StringIO()
-    save(output, True)
+    saver = SaveObjects(output)
+    saver.save(True)
     assert output.getvalue() == "bool:True\n"
 
 
 def test_save_dict_empty():
     output = StringIO()
-    save(output, {})
+    saver = SaveObjects(output)
+    saver.save({})
     assert output.getvalue() == "dict:0\n"
 
 
@@ -30,23 +31,25 @@ def test_save_dict_flat():
     """
     )
     output = StringIO()
-    save(output, fixture)
+    saver = SaveObjects(output)
+    saver.save(fixture)
     assert output.getvalue() == expected
 
 
 def test_save_float_single():
     output = StringIO()
-    save(output, 1.23)
+    saver = SaveObjects(output)
+    saver.save(1.23)
     assert output.getvalue() == "float:1.23\n"
 
 
 def test_save_int_single():
     output = StringIO()
-    save(output, -456)
+    saver = SaveObjects(output)
+    saver.save(-456)
     assert output.getvalue() == "int:-456\n"
 
 
-# [test_save_list_flat]
 def test_save_list_flat():
     fixture = [0, False]
     expected = dedent(
@@ -57,11 +60,9 @@ def test_save_list_flat():
     """
     )
     output = StringIO()
-    save(output, fixture)
+    saver = SaveObjects(output)
+    saver.save(fixture)
     assert output.getvalue() == expected
-
-
-# [/test_save_list_flat]
 
 
 def test_save_str_single():
@@ -82,7 +83,8 @@ def test_save_str_single():
     """
     )
     output = StringIO()
-    save(output, fixture)
+    saver = SaveObjects(output)
+    saver.save(fixture)
     assert output.getvalue() == expected
 
 
@@ -105,19 +107,22 @@ def test_save_set_flat():
     """
     )
     output = StringIO()
-    save(output, fixture)
+    saver = SaveObjects(output)
+    saver.save(fixture)
     actual = output.getvalue()
     assert actual in {first, second}
 
 
 def test_load_bool_single():
     fixture = StringIO("bool:True\n")
-    assert load(fixture) == True
+    loader = LoadObjects(fixture)
+    assert loader.load() == True
 
 
 def test_load_dict_empty():
     fixture = StringIO("dict:0\n")
-    assert load(fixture) == {}
+    loader = LoadObjects(fixture)
+    assert loader.load() == {}
 
 
 def test_load_dict_flat():
@@ -134,17 +139,20 @@ def test_load_dict_flat():
         """
         )
     )
-    assert load(fixture) == {"alpha": "beta", 1: 2}
+    loader = LoadObjects(fixture)
+    assert loader.load() == {"alpha": "beta", 1: 2}
 
 
 def test_load_float_single():
     fixture = StringIO("float:1.23\n")
-    assert load(fixture) == 1.23
+    loader = LoadObjects(fixture)
+    assert loader.load() == 1.23
 
 
 def test_load_int_single():
     fixture = StringIO("int:-456\n")
-    assert load(fixture) == -456
+    loader = LoadObjects(fixture)
+    assert loader.load() == -456
 
 
 def test_load_list_flat():
@@ -157,7 +165,8 @@ def test_load_list_flat():
     """
         )
     )
-    assert load(fixture) == [0, False]
+    loader = LoadObjects(fixture)
+    assert loader.load() == [0, False]
 
 
 def test_load_str_single():
@@ -172,6 +181,7 @@ def test_load_str_single():
     """
         )
     )
+    loader = LoadObjects(fixture)
     expected = dedent(
         """\
     a
@@ -179,7 +189,7 @@ def test_load_str_single():
     c
     """
     )
-    assert load(fixture) == expected
+    assert loader.load() == expected
 
 
 def test_load_set_flat():
@@ -193,20 +203,22 @@ def test_load_set_flat():
     """
         )
     )
-    assert load(fixture) == {1, "a"}
+    loader = LoadObjects(fixture)
+    assert loader.load() == {1, "a"}
 
 
 def test_roundtrip():
     fixture = ["a", {"b": 987.6}, {"c", True}]
     output = StringIO()
-    save(output, fixture)
+    saver = SaveObjects(output)
+    saver.save(fixture)
     archive = output.getvalue()
-    result = load(StringIO(archive))
+    loader = LoadObjects(StringIO(archive))
+    result = loader.load()
     assert result == fixture
 
 
 ### Test runner
-import time
 
 
 def run_tests():

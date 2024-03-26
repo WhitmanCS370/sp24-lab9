@@ -6,10 +6,10 @@ class SaveObjects:
     def save(self, thing):
         typename = type(thing).__name__
         method = f"save_{typename}"
-        assert hasattr(self, method), \
-            f"Unknown object type {typename}"
+        assert hasattr(self, method), f"Unknown object type {typename}"
         getattr(self, method)(thing)
-# [/save]
+
+    # [/save]
 
     def _write(self, *fields):
         print(":".join(str(f) for f in fields), file=self.writer)
@@ -29,6 +29,7 @@ class SaveObjects:
         self._write("str", len(lines))
         for line in lines:
             print(line, file=self.writer)
+
     # [/save_examples]
 
     def save_list(self, thing):
@@ -43,7 +44,7 @@ class SaveObjects:
 
     def save_dict(self, thing):
         self._write("dict", len(thing))
-        for (key, value) in thing.items():
+        for key, value in thing.items():
             self.save(key)
             self.save(value)
 
@@ -62,6 +63,7 @@ class LoadObjects:
         method = f"load_{key}"
         assert hasattr(self, method), f"Unknown object type {key}"
         return getattr(self, method)(value)
+
     # [/load]
 
     def load_bool(self, value):
@@ -72,19 +74,19 @@ class LoadObjects:
     # [load_float]
     def load_float(self, value):
         return float(value)
+
     # [/load_float]
 
     def load_int(self, value):
         return int(value)
 
     def load_str(self, value):
-        return "\n".join(
-            [self.reader.readline()[:-1] for _ in range(int(value))]
-        )
+        return "\n".join([self.reader.readline()[:-1] for _ in range(int(value))])
 
     # [load_list]
     def load_list(self, value):
         return [self.load() for _ in range(int(value))]
+
     # [/load_list]
 
     def load_set(self, value):
