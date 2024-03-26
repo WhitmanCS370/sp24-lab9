@@ -11,8 +11,8 @@ Enter your names here
 
 ## Team Roles for Part 1
 Who will start out as
-* DRIVER: Driver's name
-* NAVIGATOR: Navigator's name
+* DRIVER: Sam
+* NAVIGATOR: Chris
 
 You will switch halfway through this activity.
 
@@ -21,7 +21,10 @@ You will switch halfway through this activity.
 Write your answers to the questions below.
 
 * What were the main ideas from SDX chapter 16?
+Creating persistent objects across programming langauges. This way you can write libraries and modules across different langauge specifications and recreate objects in new languages
+
 * What questions did you have about the material in the chapters? What did you find confusing?
+Sam had questions about aliasing and the entirety of what section 3 was talking about. If two different varaibles have the same value, why does python use one memory location for it?
 
 ### Exercise 0: Running the tests
 
