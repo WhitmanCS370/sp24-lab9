@@ -1,0 +1,20 @@
+dict:3
+str:1
+go to school
+str:1
+5/2/2020
+int:0
+list:3
+str:1
+one
+str:1
+two
+str:1
+three
+str:1
+thing 3
+set:2
+str:1
+john
+str:1
+zurain
