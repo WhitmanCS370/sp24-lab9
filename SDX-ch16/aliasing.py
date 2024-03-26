@@ -16,9 +16,9 @@ class SaveAlias(SaveObjects):
         self.seen.add(thing_id)
         typename = type(thing).__name__
         method = f"save_{typename}"
-        assert hasattr(self, method), \
-            f"Unknown object type {typename}"
+        assert hasattr(self, method), f"Unknown object type {typename}"
         getattr(self, method)(thing)
+
     # [/save]
 
     def save_bool(self, thing):
@@ -48,7 +48,7 @@ class SaveAlias(SaveObjects):
 
     def save_dict(self, thing):
         self._write("dict", id(thing), len(thing))
-        for (key, value) in thing.items():
+        for key, value in thing.items():
             self.save(key)
             self.save(value)
 
@@ -97,6 +97,7 @@ class LoadAlias(LoadObjects):
         for _ in range(int(length)):
             result.append(self.load())
         return result
+
     # [/load_list]
 
     def load_set(self, ident, length):

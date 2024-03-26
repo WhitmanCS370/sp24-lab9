@@ -35,14 +35,17 @@ def save(writer, thing):
     # [save_dict]
     elif isinstance(thing, dict):
         print(f"dict:{len(thing)}", file=writer)
-        for (key, value) in thing.items():
+        for key, value in thing.items():
             save(writer, key)
             save(writer, value)
     # [/save_dict]
     # [/extras]
     else:
         raise ValueError(f"unknown type of thing {type(thing)}")
+
+
 # [/save]
+
 
 # [load]
 def load(reader):
@@ -87,4 +90,6 @@ def load(reader):
     # [/extras]
     else:
         raise ValueError(f"unknown type of thing {line}")
+
+
 # [/load]
