@@ -7,12 +7,12 @@ Organization:
 * SDX-ch16: The code files for the _SDX Ch. 16_ activity (as downloaded directly from the book website, unmodified) 
 
 ## Team Members for Part 1
-Enter your names here
+Jacob and Uli 
 
 ## Team Roles for Part 1
 Who will start out as
-* DRIVER: Driver's name
-* NAVIGATOR: Navigator's name
+* DRIVER: Jacob
+* NAVIGATOR: Uli
 
 You will switch halfway through this activity.
 
@@ -21,7 +21,9 @@ You will switch halfway through this activity.
 Write your answers to the questions below.
 
 * What were the main ideas from SDX chapter 16?
+General objects that can be shared between softwares/languages. We also learned about aliasing. 
 * What questions did you have about the material in the chapters? What did you find confusing?
+I found aliasing a bit confusing. 
 
 ### Exercise 0: Running the tests
 
@@ -42,6 +44,8 @@ I thought of two strategies. Implement whichever you prefer:
 2. Add convenience methods save and load to `objects.py`. 
 
 After doing this exercise, explain the strategy you chose, and why.
+
+We decided to adapt each of the given tests to use the object oriented interface presented by 'objects.py'. We pretty easily did the tests for save but struggled with the tests for loadobjects. 
 
 ### Exercise 2: Refactoring `SaveObjects.save`
 

@@ -1,6 +1,6 @@
 from io import StringIO
 
-import pytest
+import pytest 
 from aliasing_wrong import LoadAlias, SaveAlias
 
 
