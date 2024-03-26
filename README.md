@@ -11,8 +11,8 @@ Enter your names here
 
 ## Team Roles for Part 1
 Who will start out as
-* DRIVER: Driver's name
-* NAVIGATOR: Navigator's name
+* DRIVER: Terence
+* NAVIGATOR: Coden
 
 You will switch halfway through this activity.
 
@@ -21,7 +21,9 @@ You will switch halfway through this activity.
 Write your answers to the questions below.
 
 * What were the main ideas from SDX chapter 16?
+- Building a version control from scratch and accounting for different data types. 
 * What questions did you have about the material in the chapters? What did you find confusing?
+- We found the section of Alliasing to be confusing. 
 
 ### Exercise 0: Running the tests
 
