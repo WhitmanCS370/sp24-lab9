@@ -11,8 +11,8 @@ Enter your names here
 
 ## Team Roles for Part 1
 Who will start out as
-* DRIVER: Driver's name
-* NAVIGATOR: Navigator's name
+* DRIVER: Gabriel Paris-Moe
+* NAVIGATOR: Clara Bates
 
 You will switch halfway through this activity.
 
@@ -22,6 +22,9 @@ Write your answers to the questions below.
 
 * What were the main ideas from SDX chapter 16?
 * What questions did you have about the material in the chapters? What did you find confusing?
+the main ideas from the chapter were persistance frameworks to save data structures and built in data types so you can access them. keeping track of them as well. another thing was the open closed principle that states that software should be open for extension by closed for modification. you should only write more and set it up in a way that allows for that.
+
+how do you follow the open closed principle when you dont know all the requirements at the start?
 
 ### Exercise 0: Running the tests
 
@@ -42,6 +45,7 @@ I thought of two strategies. Implement whichever you prefer:
 2. Add convenience methods save and load to `objects.py`. 
 
 After doing this exercise, explain the strategy you chose, and why.
+we didnt even end up getting this to work. The thing that we wanted to use is that when you create a 
 
 ### Exercise 2: Refactoring `SaveObjects.save`
 
