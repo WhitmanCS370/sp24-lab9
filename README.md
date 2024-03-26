@@ -7,12 +7,12 @@ Organization:
 * SDX-ch16: The code files for the _SDX Ch. 16_ activity (as downloaded directly from the book website, unmodified) 
 
 ## Team Members for Part 1
-Enter your names here
+John, Zurain
 
 ## Team Roles for Part 1
 Who will start out as
-* DRIVER: Driver's name
-* NAVIGATOR: Navigator's name
+* DRIVER: John
+* NAVIGATOR: Zurain
 
 You will switch halfway through this activity.
 
@@ -21,11 +21,19 @@ You will switch halfway through this activity.
 Write your answers to the questions below.
 
 * What were the main ideas from SDX chapter 16?
+
+    * Open-Closed Principle - closed for modification open for extension
+    * Aliasing different objects
+    * Saving objects and restoring them
+
 * What questions did you have about the material in the chapters? What did you find confusing?
+    * How do you make sure that you aren't violating the open-closed principle?
 
 ### Exercise 0: Running the tests
 
 Run the tests in all three test modules. (I've added some code to make this feasible.) Verify that all tests pass.
+
+All tests passed except one in `test_aliasing_wrong.py`.
 
 ### Exercise 1: Testing objects.py
 
@@ -43,6 +51,8 @@ I thought of two strategies. Implement whichever you prefer:
 
 After doing this exercise, explain the strategy you chose, and why.
 
+We adapted to use the object-oriented interface by passing in a file to write and read.
+
 ### Exercise 2: Refactoring `SaveObjects.save`
 
 In `objects.py`. find the implementation of the save method.
@@ -50,6 +60,8 @@ Refactor for understandability by renaming a variable and introducing an explain
 Run the corresponding test module to verify that your refactorings didn't break anything.
 
 After doing this exercise, briefly explain what you changed.
+
+We stored the function that saves a specific type in a variable named `save_function`
 
 ### Exercise 3: Understanding code
 
@@ -61,8 +73,12 @@ Answer the following questions:
 
     (Hint: Look at the implementation of `LoadObjects.load`.) 
 
+We believe that the colon at the end is for separating alias, identifier and value 
+
 2.  Why doesn’t `LoadAlias.load` calculate object IDs? 
     Why does it use the IDs saved in the archive instead?
+
+We think that we use the IDs saved in the archive so that way if we save two objects referencing the same object and then load both objects again, they still reference the same object.
 
 ### Exercise 4: Strings
 

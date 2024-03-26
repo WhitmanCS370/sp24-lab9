@@ -6,9 +6,11 @@ class SaveObjects:
     def save(self, thing):
         typename = type(thing).__name__
         method = f"save_{typename}"
+        # Make sure we have a method to save the object
         assert hasattr(self, method), \
             f"Unknown object type {typename}"
-        getattr(self, method)(thing)
+        save_function = getattr(self, method)
+        save_function(thing)
 # [/save]
 
     def _write(self, *fields):
