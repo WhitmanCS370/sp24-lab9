@@ -8,7 +8,8 @@ class SaveObjects:
         method = f"save_{typename}"
         assert hasattr(self, method), \
             f"Unknown object type {typename}"
-        getattr(self, method)(thing)
+        save_method = getattr(self, method)
+        save_method(thing)
 # [/save]
 
     def _write(self, *fields):
@@ -26,9 +27,10 @@ class SaveObjects:
 
     def save_str(self, thing):
         lines = thing.split("\n")
+        line = thing
         self._write("str", len(lines))
-        for line in lines:
-            print(line, file=self.writer)
+        # for line in lines:
+        print(line, file=self.writer)
     # [/save_examples]
 
     def save_list(self, thing):
