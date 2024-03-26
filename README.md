@@ -7,7 +7,8 @@ Organization:
 * SDX-ch16: The code files for the _SDX Ch. 16_ activity (as downloaded directly from the book website, unmodified) 
 
 ## Team Members for Part 1
-Enter your names here
+Andrew Tate
+Steven Lin
 
 ## Team Roles for Part 1
 Who will start out as
@@ -42,6 +43,10 @@ I thought of two strategies. Implement whichever you prefer:
 2. Add convenience methods save and load to `objects.py`. 
 
 After doing this exercise, explain the strategy you chose, and why.
+
+We used method 1. and created a saver object and loader object for each test. We would then save the desired data
+and check that when the loader method was called, it matched the data that should have been saved. We also cut out
+the load testing, as it was reduntant and done along side save testing.
 
 ### Exercise 2: Refactoring `SaveObjects.save`
 
